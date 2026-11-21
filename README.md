@@ -13,7 +13,7 @@
 
 ## Overview
 
-A global company needs employees to reach internal systems safely from home or while travelling. This project delivers a working design in a VMware lab and tests it as an attacker would, then records what still needs fixing.
+A global company needs employees to reach internal systems safely from home or while travelling. This project delivers a working design in a VMware lab, tests it from a remote client's point of view, then records what still needs fixing.
 
 | Result | Value |
 |---|---|
@@ -51,6 +51,23 @@ flowchart LR
 | Endpoint | Defender and ClamAV checks, PowerShell compliance script, Wazuh SCA |
 | Monitoring | Wazuh agents and a custom level-12 rule for repeated SSH failures |
 | People and policy | Security awareness training with quiz, remote access policy, compliance mapping |
+
+## Lab environment
+
+| Machine | Role |
+|---|---|
+| `gw-hq` | Hub gateway: OpenVPN, strongSwan, OpenLDAP, PAM + TOTP, iptables, Wazuh agent |
+| `gw-branch` | Branch gateway at the other end of the IPsec tunnel |
+| Kali Linux | Remote VPN client and test machine |
+| `win-laptop` | Windows endpoint: Defender, compliance script, Wazuh agent |
+| `win-rdp` | Windows Server for RDP and the encrypted SMB share |
+| Wazuh server | Central monitoring and custom alert rules |
+
+Built on VMware with isolated host-only networks.
+
+## Skills demonstrated
+
+VPN design (OpenVPN and IPsec) · PKI and certificate revocation · LDAP and MFA integration · Linux firewalling (iptables) · network segmentation and zero trust · Windows hardening (RDP, SMB, Defender) · SIEM and custom detection rules (Wazuh) · risk scoring (likelihood x impact) · security documentation and policy writing · security awareness training
 
 ## Selected evidence
 
